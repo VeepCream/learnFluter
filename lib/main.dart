@@ -1,3 +1,10 @@
+import 'package:flutter/material.dart';
+
 void main() {
-  print('hello, flutter');
+  var app = MaterialApp(
+    title: 'My App',
+    home: Text('My App'),
+  );
+
+  runApp(app);
 }
