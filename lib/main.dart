@@ -31,7 +31,11 @@ class _CounterAreaState extends State<CounterArea> {
       appBar: AppBar(
         title: Text('Counter'),
       ),
-      body: Center(child: Text('hello, flutter')),
+      body: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [Text('กดปุ่มถ้าต้องการเพิ่มตัวนับ'), Text('0')],
+      )),
     );
   }
 }
