@@ -34,7 +34,13 @@ class _CounterAreaState extends State<CounterArea> {
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [Text('กดปุ่มถ้าต้องการเพิ่มตัวนับ'), Text('0')],
+        children: [
+          Text('กดปุ่มถ้าต้องการเพิ่มตัวนับ'),
+          Text(
+            '0',
+            style: TextStyle(fontSize: 60, color: Colors.blue),
+          )
+        ],
       )),
     );
   }
