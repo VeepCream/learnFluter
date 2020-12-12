@@ -42,6 +42,10 @@ class _CounterAreaState extends State<CounterArea> {
           )
         ],
       )),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+      ),
     );
   }
 }
