@@ -44,7 +44,13 @@ class _CounterAreaState extends State<CounterArea> {
         ],
       )),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          print('button pressed');
+          setState(() {
+            _counter = _counter + 1;
+          });
+          print('_counter: $_counter');
+        },
         child: Icon(Icons.add),
       ),
     );
