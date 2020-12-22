@@ -25,6 +25,7 @@ class CounterArea extends StatefulWidget {
 }
 
 class _CounterAreaState extends State<CounterArea> {
+  int _counter = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +38,7 @@ class _CounterAreaState extends State<CounterArea> {
         children: [
           Text('กดปุ่มถ้าต้องการเพิ่มตัวนับ'),
           Text(
-            '0',
+            _counter.toString(),
             style: TextStyle(fontSize: 60, color: Colors.blue),
           )
         ],
