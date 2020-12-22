@@ -26,6 +26,15 @@ class CounterArea extends StatefulWidget {
 
 class _CounterAreaState extends State<CounterArea> {
   int _counter = 0;
+
+  void onCounterButtonPressed() {
+    print('button pressed');
+    setState(() {
+      _counter = _counter + 1;
+    });
+    print('_counter: $_counter');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,13 +53,7 @@ class _CounterAreaState extends State<CounterArea> {
         ],
       )),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print('button pressed');
-          setState(() {
-            _counter = _counter + 1;
-          });
-          print('_counter: $_counter');
-        },
+        onPressed: onCounterButtonPressed,
         child: Icon(Icons.add),
       ),
     );
