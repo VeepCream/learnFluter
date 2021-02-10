@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text("Nextflow Contact"),
         ),
-        body: Column(
+        body: ListView(
           children: generateText(10),
         ));
   }
