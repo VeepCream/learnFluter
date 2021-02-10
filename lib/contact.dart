@@ -1,5 +1,5 @@
 class Contact {
   String name;
   String phoneNumber;
-  Contact() {}
+  Contact(this.name, this.phoneNumber);
 }
