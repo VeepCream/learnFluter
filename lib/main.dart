@@ -27,16 +27,21 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    var contact = Contact("vee", "0827975507");
+    List<Contact> contactList = [
+      Contact("vee", "0827975507"),
+      Contact("emergency", "191")
+    ];
     return Scaffold(
         appBar: AppBar(
           title: Text("Nextflow Contact"),
         ),
         body: ListView.builder(
-          itemCount: 10,
+          itemCount: contactList.length,
           itemBuilder: (BuildContext context, int index) {
+            Contact contact = contactList[index];
             return ListTile(
-              title: Text('${index + 1}'),
+              title: Text(contact.name),
+              subtitle: Text(contact.phoneNumber),
             );
           },
         ));
