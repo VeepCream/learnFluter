@@ -28,8 +28,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     List<Contact> contactList = [
-      Contact("vee", "0827975507"),
-      Contact("emergency", "191")
+      Contact("vee", "0827975507", 'assets/images/nextflow.png'),
+      Contact("emergency", "191", 'assets/images/error.png')
     ];
     return Scaffold(
         appBar: AppBar(
@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
           itemBuilder: (BuildContext context, int index) {
             Contact contact = contactList[index];
             return ListTile(
-              leading: Text('${index + 1}'),
+              leading: Image.asset(contact.imageSource),
               title: Text(contact.name),
               subtitle: Text(contact.phoneNumber),
             );
