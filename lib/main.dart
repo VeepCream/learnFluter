@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'contact.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,20 +25,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<Widget> generateText(int count) {
-    List<Widget> textWidgets = [];
-
-    for (var i = 0; i < count; i++) {
-      var widget = ListTile(
-        title: Text("${i + 1}"),
-      );
-      textWidgets.add(widget);
-    }
-    return textWidgets;
-  }
-
   @override
   Widget build(BuildContext context) {
+    var contact = Contact("vee", "0827975507");
     return Scaffold(
         appBar: AppBar(
           title: Text("Nextflow Contact"),
