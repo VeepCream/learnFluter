@@ -28,7 +28,9 @@ class _MyHomePageState extends State<MyHomePage> {
     List<Widget> textWidgets = [];
 
     for (var i = 0; i < count; i++) {
-      var widget = Text('${i + 1}');
+      var widget = ListTile(
+        title: Text("${i + 1}"),
+      );
       textWidgets.add(widget);
     }
     return textWidgets;
