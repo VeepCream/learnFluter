@@ -5,57 +5,33 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'My App',
-      theme: ThemeData(primarySwatch: Colors.green),
-      home: CounterArea(),
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: MyHomePage(),
     );
   }
 }
 
-class CounterArea extends StatefulWidget {
-  CounterArea({Key key}) : super(key: key);
-
+class MyHomePage extends StatefulWidget {
   @override
-  _CounterAreaState createState() => _CounterAreaState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _CounterAreaState extends State<CounterArea> {
-  int _counter = 0;
-
-  void onCounterButtonPressed() {
-    print('button pressed');
-    setState(() {
-      _counter = _counter + 1;
-    });
-    print('_counter: $_counter');
-  }
-
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Counter'),
-      ),
-      body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('กดปุ่มถ้าต้องการเพิ่มตัวนับ'),
-          Text(
-            _counter.toString(),
-            style: TextStyle(fontSize: 60, color: Colors.blue),
-          )
-        ],
-      )),
-      floatingActionButton: FloatingActionButton(
-        onPressed: onCounterButtonPressed,
-        child: Icon(Icons.add),
-      ),
-    );
+        appBar: AppBar(
+          title: Text("Nextflow Contact"),
+        ),
+        body: Column(
+          children: <Widget>[],
+        ));
   }
 }
