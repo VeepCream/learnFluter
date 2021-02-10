@@ -24,20 +24,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
+  List<Widget> generateText(int count) {
     List<Widget> textWidgets = [];
 
-    for (var i = 0; i < 10; i++) {
-      var widget = Text('$i');
+    for (var i = 0; i < count; i++) {
+      var widget = Text('${i + 1}');
       textWidgets.add(widget);
     }
+    return textWidgets;
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text("Nextflow Contact"),
         ),
         body: Column(
-          children: textWidgets,
+          children: generateText(10),
         ));
   }
 }
