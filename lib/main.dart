@@ -40,6 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
           itemBuilder: (BuildContext context, int index) {
             Contact contact = contactList[index];
             return ListTile(
+              leading: Text('${index + 1}'),
               title: Text(contact.name),
               subtitle: Text(contact.phoneNumber),
             );
