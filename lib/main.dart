@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'contact.dart';
 
 void main() {
@@ -43,7 +44,9 @@ class _MyHomePageState extends State<MyHomePage> {
               leading: Image.asset(contact.imageSource),
               title: Text(contact.name),
               subtitle: Text(contact.phoneNumber),
-              onTap: () {},
+              onTap: () {
+                launch('tel:${contact.phoneNumber}');
+              },
             );
           },
         ));
