@@ -43,6 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
               leading: Image.asset(contact.imageSource),
               title: Text(contact.name),
               subtitle: Text(contact.phoneNumber),
+              onTap: () {},
             );
           },
         ));
