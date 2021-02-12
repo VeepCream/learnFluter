@@ -30,6 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
 
     print('init state');
+    getData();
   }
 
   Future<void> getData() async {
