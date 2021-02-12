@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             ListTile(
               title: Text('ผู้ติดเชื้อสะสม'),
-              subtitle: Text('${_dataFromWebAPI.confirmed}'),
+              subtitle: Text('${_dataFromWebAPI?.confirmed}'),
             ),
             ListTile(
               title: Text('หายแล้ว'),
