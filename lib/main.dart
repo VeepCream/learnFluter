@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:learn/covid_today_result.dart';
+import 'dart:developer' as dev;
 
 void main() {
   runApp(MyApp());
@@ -25,6 +27,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  CovidTodayResult _dataFromWebAPI;
+
   @override
   void initState() {
     super.initState();
@@ -35,7 +39,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> getData() async {
     var response = await http.get('https://covid19.th-stat.com/api/open/today');
-    print(response.body);
+
+    setState(() {
+      _dataFromWebAPI = covidTodayResultFromJson(response.body);
+      dev.log(_dataFromWebAPI.toJson().toString());
+      print("test");
+    });
   }
 
   @override
@@ -49,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             ListTile(
               title: Text('ผู้ติดเชื้อสะสม'),
-              subtitle: Text('0'),
+              subtitle: Text('${_dataFromWebAPI.confirmed}'),
             ),
             ListTile(
               title: Text('หายแล้ว'),
