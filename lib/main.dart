@@ -62,15 +62,15 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: Text('หายแล้ว'),
-              subtitle: Text('0'),
+              subtitle: Text('${_dataFromWebAPI?.recovered ?? "0"}'),
             ),
             ListTile(
               title: Text('รักษาอยู่ในโรงพยาบาล'),
-              subtitle: Text('0'),
+              subtitle: Text('${_dataFromWebAPI?.hospitalized ?? "0"}'),
             ),
             ListTile(
               title: Text('เสียชีวิต'),
-              subtitle: Text('0'),
+              subtitle: Text('${_dataFromWebAPI?.deaths ?? "0"}'),
             )
           ],
         ));
