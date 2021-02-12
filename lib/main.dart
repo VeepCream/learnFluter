@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(MyApp());
@@ -29,6 +30,11 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
 
     print('init state');
+  }
+
+  Future<void> getData() async {
+    var response = await http.get('https://covid19.th-stat.com/api/open/today');
+    print(response.body);
   }
 
   @override
