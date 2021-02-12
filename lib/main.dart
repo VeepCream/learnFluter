@@ -27,14 +27,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  CovidTodayResult _dataFromWebAPI;
-
   @override
   void initState() {
     super.initState();
 
     print('init state');
-    getData();
   }
 
   Future<CovidTodayResult> getData() async {
@@ -42,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     var result = covidTodayResultFromJson(response.body);
     // _dataFromWebAPI = covidTodayResultFromJson(response.body);
-    dev.log(_dataFromWebAPI.toJson().toString());
+    //dev.log(_dataFromWebAPI.toJson().toString());
     print("test");
 
     return result;
@@ -59,9 +56,30 @@ class _MyHomePageState extends State<MyHomePage> {
 
       body: FutureBuilder(
         future: getData(),
-        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+        builder:
+            (BuildContext context, AsyncSnapshot<CovidTodayResult> snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return Text("ได้ข้อมูลแล้ว");
+            var result = snapshot.data;
+            return ListView(
+              children: <Widget>[
+                ListTile(
+                  title: Text('ผู้ติดเชื้อสะสม'),
+                  subtitle: Text('${result?.confirmed ?? "0"}'),
+                ),
+                ListTile(
+                  title: Text('หายแล้ว'),
+                  subtitle: Text('${result?.recovered ?? "0"}'),
+                ),
+                ListTile(
+                  title: Text('รักษาอยู่ในโรงพยาบาล'),
+                  subtitle: Text('${result?.hospitalized ?? "0"}'),
+                ),
+                ListTile(
+                  title: Text('เสียชีวิต'),
+                  subtitle: Text('${result?.deaths ?? "0"}'),
+                )
+              ],
+            );
           }
           return LinearProgressIndicator();
         },
