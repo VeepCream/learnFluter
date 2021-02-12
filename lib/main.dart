@@ -55,34 +55,41 @@ class _MyHomePageState extends State<MyHomePage> {
       indicator = LinearProgressIndicator();
     }
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: Column(
-          children: <Widget>[
-            indicator ?? Container(),
-            Expanded(
-                child: ListView(
-              children: <Widget>[
-                ListTile(
-                  title: Text('ผู้ติดเชื้อสะสม'),
-                  subtitle: Text('${_dataFromWebAPI?.confirmed ?? "0"}'),
-                ),
-                ListTile(
-                  title: Text('หายแล้ว'),
-                  subtitle: Text('${_dataFromWebAPI?.recovered ?? "0"}'),
-                ),
-                ListTile(
-                  title: Text('รักษาอยู่ในโรงพยาบาล'),
-                  subtitle: Text('${_dataFromWebAPI?.hospitalized ?? "0"}'),
-                ),
-                ListTile(
-                  title: Text('เสียชีวิต'),
-                  subtitle: Text('${_dataFromWebAPI?.deaths ?? "0"}'),
-                )
-              ],
-            )),
-          ],
-        ));
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+
+      body: FutureBuilder(
+        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+          return LinearProgressIndicator();
+        },
+      ),
+      // body: Column(
+      //   children: <Widget>[
+      //     indicator ?? Container(),
+      //     Expanded(
+      //         child: ListView(
+      //       children: <Widget>[
+      //         ListTile(
+      //           title: Text('ผู้ติดเชื้อสะสม'),
+      //           subtitle: Text('${_dataFromWebAPI?.confirmed ?? "0"}'),
+      //         ),
+      //         ListTile(
+      //           title: Text('หายแล้ว'),
+      //           subtitle: Text('${_dataFromWebAPI?.recovered ?? "0"}'),
+      //         ),
+      //         ListTile(
+      //           title: Text('รักษาอยู่ในโรงพยาบาล'),
+      //           subtitle: Text('${_dataFromWebAPI?.hospitalized ?? "0"}'),
+      //         ),
+      //         ListTile(
+      //           title: Text('เสียชีวิต'),
+      //           subtitle: Text('${_dataFromWebAPI?.deaths ?? "0"}'),
+      //         )
+      //       ],
+      //     )),
+      //   ],
+      // )
+    );
   }
 }
