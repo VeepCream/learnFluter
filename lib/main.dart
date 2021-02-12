@@ -50,13 +50,17 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     print('build');
+    var indicator;
+    if (_dataFromWebAPI == null) {
+      indicator = LinearProgressIndicator();
+    }
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
         ),
         body: Column(
           children: <Widget>[
-            LinearProgressIndicator(),
+            indicator ?? Container(),
             Expanded(
                 child: ListView(
               children: <Widget>[
