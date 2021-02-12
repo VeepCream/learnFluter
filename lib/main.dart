@@ -37,30 +37,32 @@ class _MyHomePageState extends State<MyHomePage> {
     getData();
   }
 
-  Future<void> getData() async {
+  Future<CovidTodayResult> getData() async {
     var response = await http.get('https://covid19.th-stat.com/api/open/today');
 
-    setState(() {
-      _dataFromWebAPI = covidTodayResultFromJson(response.body);
-      dev.log(_dataFromWebAPI.toJson().toString());
-      print("test");
-    });
+    var result = covidTodayResultFromJson(response.body);
+    // _dataFromWebAPI = covidTodayResultFromJson(response.body);
+    dev.log(_dataFromWebAPI.toJson().toString());
+    print("test");
+
+    return result;
   }
 
   @override
   Widget build(BuildContext context) {
     print('build');
-    var indicator;
-    if (_dataFromWebAPI == null) {
-      indicator = LinearProgressIndicator();
-    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
 
       body: FutureBuilder(
+        future: getData(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return Text("ได้ข้อมูลแล้ว");
+          }
           return LinearProgressIndicator();
         },
       ),
