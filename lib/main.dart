@@ -69,6 +69,22 @@ class _MyHomePageState extends State<MyHomePage> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Color(0xff77007c)),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        Text(
+                          'ผู้ติดเชื้อสะสม',
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        ),
+                        Expanded(
+                          child: Text(
+                            '${result?.confirmed ?? "0"}',
+                            style: TextStyle(fontSize: 20, color: Colors.white),
+                            textAlign: TextAlign.right,
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                   ListTile(
                     title: Text('ผู้ติดเชื้อสะสม'),
