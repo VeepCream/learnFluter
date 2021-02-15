@@ -12,6 +12,7 @@ class StatBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 100,
+      padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10), color: backgroundColor),
       child: Row(
@@ -24,7 +25,7 @@ class StatBox extends StatelessWidget {
           Expanded(
             child: Text(
               '${total ?? "0"}',
-              style: TextStyle(fontSize: 20, color: Colors.white),
+              style: TextStyle(fontSize: 40, color: Colors.white),
               textAlign: TextAlign.right,
             ),
           )

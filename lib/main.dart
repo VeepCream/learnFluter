@@ -66,49 +66,35 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: <Widget>[
-                  Container(
-                    height: 100,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color(0xff77007c)),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: <Widget>[
-                        Text(
-                          'ผู้ติดเชื้อสะสม',
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                        ),
-                        Expanded(
-                          child: Text(
-                            '${result?.confirmed ?? "0"}',
-                            style: TextStyle(fontSize: 20, color: Colors.white),
-                            textAlign: TextAlign.right,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
                   StatBox(
                     title: 'ผู้ติดเชื้อสะสม',
                     total: result?.confirmed,
                     backgroundColor: Color(0xff77007c),
                   ),
-                  ListTile(
-                    title: Text('ผู้ติดเชื้อสะสม'),
-                    subtitle: Text('${result?.confirmed ?? "0"}'),
+                  SizedBox(
+                    height: 10,
                   ),
-                  ListTile(
-                    title: Text('หายแล้ว'),
-                    subtitle: Text('${result?.recovered ?? "0"}'),
+                  StatBox(
+                    title: 'หายแล้ว',
+                    total: result?.recovered,
+                    backgroundColor: Color(0xff036233),
                   ),
-                  ListTile(
-                    title: Text('รักษาอยู่ในโรงพยาบาล'),
-                    subtitle: Text('${result?.hospitalized ?? "0"}'),
+                  SizedBox(
+                    height: 10,
                   ),
-                  ListTile(
-                    title: Text('เสียชีวิต'),
-                    subtitle: Text('${result?.deaths ?? "0"}'),
-                  )
+                  StatBox(
+                    title: 'รักษาอยู่ในโรงพยาบาล',
+                    total: result?.hospitalized,
+                    backgroundColor: Color(0xff00B4B4),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  StatBox(
+                    title: 'เสียชีวิต',
+                    total: result?.deaths,
+                    backgroundColor: Color(0xff777777),
+                  ),
                 ],
               ),
             );
