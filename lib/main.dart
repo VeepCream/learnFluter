@@ -91,6 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   StatBox(
                     title: 'ผู้ติดเชื้อสะสม',
                     total: result?.confirmed,
+                    color: Color(0xff77007c),
                   ),
                   ListTile(
                     title: Text('ผู้ติดเชื้อสะสม'),
