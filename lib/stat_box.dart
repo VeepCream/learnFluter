@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class StatBox extends StatelessWidget {
   final String title;
@@ -24,7 +25,7 @@ class StatBox extends StatelessWidget {
           ),
           Expanded(
             child: Text(
-              '${total ?? "0"}',
+              '${NumberFormat("#,###").format(total) ?? "0"}',
               style: TextStyle(fontSize: 40, color: Colors.white),
               textAlign: TextAlign.right,
             ),
