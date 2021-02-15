@@ -3,6 +3,8 @@ import 'package:http/http.dart' as http;
 import 'package:learn/covid_today_result.dart';
 import 'dart:developer' as dev;
 
+import 'package:learn/stat_box.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -85,6 +87,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         )
                       ],
                     ),
+                  ),
+                  StatBox(
+                    title: 'ผู้ติดเชื้อสะสม',
+                    total: result?.confirmed,
                   ),
                   ListTile(
                     title: Text('ผู้ติดเชื้อสะสม'),
