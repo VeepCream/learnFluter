@@ -34,7 +34,14 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text(widget.title),
           actions: <Widget>[
-            IconButton(icon: Icon(Icons.add), onPressed: () {})
+            IconButton(
+                icon: Icon(Icons.add),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (BuildContext context) {
+                    return Text('');
+                  }));
+                })
           ],
         ),
         body: Container());
