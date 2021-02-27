@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:learn/covid_today_result.dart';
-import 'dart:developer' as dev;
-
-import 'package:learn/stat_box.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,15 +8,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Nextflow COVID-19 Today',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: MyHomePage(title: 'Nextflow COVID-19 Today'),
+      title: 'Nextflow Personal Post',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: MyHomePage(title: 'Personal Post'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
+
   final String title;
 
   @override
@@ -30,113 +29,14 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
-  void initState() {
-    super.initState();
-
-    print('init state');
-  }
-
-  Future<CovidTodayResult> getData() async {
-    print("get Data");
-    try {
-      var response =
-          await http.get('https://covid19.th-stat.com/api/open/today');
-      print(response.body);
-      var result = covidTodayResultFromJson(response.body);
-      // _dataFromWebAPI = covidTodayResultFromJson(response.body);
-      dev.log(result.toString());
-      print("test");
-
-      return result;
-    } catch (e) {
-      print(e);
-      return null;
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
-    print('build');
-
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-
-      body: FutureBuilder(
-        future: getData(),
-        builder:
-            (BuildContext context, AsyncSnapshot<CovidTodayResult> snapshot) {
-          print(snapshot.connectionState);
-          if (snapshot.connectionState == ConnectionState.done) {
-            var result = snapshot.data;
-            print(result);
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: <Widget>[
-                  StatBox(
-                    title: 'ผู้ติดเชื้อสะสม',
-                    total: result?.confirmed ?? 0,
-                    backgroundColor: Color(0xff77007c),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  StatBox(
-                    title: 'หายแล้ว',
-                    total: result?.recovered ?? 0,
-                    backgroundColor: Color(0xff036233),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  StatBox(
-                    title: 'รักษาอยู่ในโรงพยาบาล',
-                    total: result?.hospitalized ?? 0,
-                    backgroundColor: Color(0xff00B4B4),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  StatBox(
-                    title: 'เสียชีวิต',
-                    total: result?.deaths ?? 0,
-                    backgroundColor: Color(0xff777777),
-                  ),
-                ],
-              ),
-            );
-          }
-          return LinearProgressIndicator();
-        },
-      ),
-      // body: Column(
-      //   children: <Widget>[
-      //     indicator ?? Container(),
-      //     Expanded(
-      //         child: ListView(
-      //       children: <Widget>[
-      //         ListTile(
-      //           title: Text('ผู้ติดเชื้อสะสม'),
-      //           subtitle: Text('${_dataFromWebAPI?.confirmed ?? "0"}'),
-      //         ),
-      //         ListTile(
-      //           title: Text('หายแล้ว'),
-      //           subtitle: Text('${_dataFromWebAPI?.recovered ?? "0"}'),
-      //         ),
-      //         ListTile(
-      //           title: Text('รักษาอยู่ในโรงพยาบาล'),
-      //           subtitle: Text('${_dataFromWebAPI?.hospitalized ?? "0"}'),
-      //         ),
-      //         ListTile(
-      //           title: Text('เสียชีวิต'),
-      //           subtitle: Text('${_dataFromWebAPI?.deaths ?? "0"}'),
-      //         )
-      //       ],
-      //     )),
-      //   ],
-      // )
-    );
+        appBar: AppBar(
+          title: Text(widget.title),
+          actions: <Widget>[
+            IconButton(icon: Icon(Icons.add), onPressed: () {})
+          ],
+        ),
+        body: Container());
   }
 }
