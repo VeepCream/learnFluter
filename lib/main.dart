@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn/pages/new_post_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -39,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (BuildContext context) {
-                    return Text('');
+                    return NewsPostPage();
                   }));
                 })
           ],
