@@ -9,6 +9,13 @@ class NewsPostPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('สร้างโพสใหม่'),
       ),
+      body: Column(
+        children: [
+          Padding(padding: EdgeInsets.all(10)),
+          TextFormField(),
+          RaisedButton(child: Text('โพส'), onPressed: () {})
+        ],
+      ),
     );
   }
 }
