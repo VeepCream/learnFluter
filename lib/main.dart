@@ -37,14 +37,21 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<CovidTodayResult> getData() async {
-    var response = await http.get('https://covid19.th-stat.com/api/open/today');
+    print("get Data");
+    try {
+      var response =
+          await http.get('https://covid19.th-stat.com/api/open/today');
+      print(response.body);
+      var result = covidTodayResultFromJson(response.body);
+      // _dataFromWebAPI = covidTodayResultFromJson(response.body);
+      dev.log(result.toString());
+      print("test");
 
-    var result = covidTodayResultFromJson(response.body);
-    // _dataFromWebAPI = covidTodayResultFromJson(response.body);
-    //dev.log(_dataFromWebAPI.toJson().toString());
-    print("test");
-
-    return result;
+      return result;
+    } catch (e) {
+      print(e);
+      return null;
+    }
   }
 
   @override
@@ -60,15 +67,17 @@ class _MyHomePageState extends State<MyHomePage> {
         future: getData(),
         builder:
             (BuildContext context, AsyncSnapshot<CovidTodayResult> snapshot) {
+          print(snapshot.connectionState);
           if (snapshot.connectionState == ConnectionState.done) {
             var result = snapshot.data;
+            print(result);
             return Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: <Widget>[
                   StatBox(
                     title: 'ผู้ติดเชื้อสะสม',
-                    total: result?.confirmed,
+                    total: result?.confirmed ?? 0,
                     backgroundColor: Color(0xff77007c),
                   ),
                   SizedBox(
@@ -76,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   StatBox(
                     title: 'หายแล้ว',
-                    total: result?.recovered,
+                    total: result?.recovered ?? 0,
                     backgroundColor: Color(0xff036233),
                   ),
                   SizedBox(
@@ -84,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   StatBox(
                     title: 'รักษาอยู่ในโรงพยาบาล',
-                    total: result?.hospitalized,
+                    total: result?.hospitalized ?? 0,
                     backgroundColor: Color(0xff00B4B4),
                   ),
                   SizedBox(
@@ -92,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   StatBox(
                     title: 'เสียชีวิต',
-                    total: result?.deaths,
+                    total: result?.deaths ?? 0,
                     backgroundColor: Color(0xff777777),
                   ),
                 ],
