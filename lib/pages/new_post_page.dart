@@ -11,9 +11,17 @@ class NewsPostPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Padding(padding: EdgeInsets.all(10)),
-          TextFormField(),
-          RaisedButton(child: Text('โพส'), onPressed: () {})
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: TextFormField(),
+          ),
+          Expanded(child: SizedBox()),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+                width: double.maxFinite,
+                child: RaisedButton(child: Text('โพส'), onPressed: () {})),
+          )
         ],
       ),
     );
