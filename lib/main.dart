@@ -47,7 +47,19 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: ListView.builder(
           itemBuilder: (BuildContext context, int index) {
-            return Text('ok');
+            return Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('10 min ago'),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text('สวัสดี โลก')
+                ],
+              ),
+            );
           },
         ));
   }
