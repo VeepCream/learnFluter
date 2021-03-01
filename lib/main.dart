@@ -45,6 +45,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 })
           ],
         ),
-        body: Container());
+        body: ListView.builder(
+          itemBuilder: (BuildContext context, int index) {
+            return Text('ok');
+          },
+        ));
   }
 }
