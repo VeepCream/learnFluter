@@ -13,7 +13,12 @@ class NewsPostPage extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsets.all(10),
-            child: TextFormField(),
+            child: TextFormField(
+              autofocus: true,
+              maxLength: 3,
+              decoration: InputDecoration(
+                  border: InputBorder.none, hintText: 'คุณกำลังทำอะไรอยู่'),
+            ),
           ),
           Expanded(child: SizedBox()),
           Padding(
