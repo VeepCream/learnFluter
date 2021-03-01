@@ -52,11 +52,17 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('10 min ago'),
+                  Text(
+                    '10 min ago',
+                    style: TextStyle(color: Colors.grey[400]),
+                  ),
                   SizedBox(
                     height: 10,
                   ),
-                  Text('สวัสดี โลก')
+                  Text(
+                    'สวัสดี โลก',
+                    style: TextStyle(fontSize: 18),
+                  )
                 ],
               ),
             );
