@@ -39,53 +39,93 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-          actions: <Widget>[
-            IconButton(
-                icon: Icon(Icons.add),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (BuildContext context) {
-                    return NewsPostPage();
-                  }));
-                })
-          ],
-        ),
-        body: ListView.builder(
-          itemCount: 1,
-          itemBuilder: (BuildContext context, int index) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '10 min ago',
-                        style: TextStyle(color: Colors.grey[400]),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'สวัสดี โลก',
-                        style: TextStyle(fontSize: 18),
-                      )
-                    ],
+      appBar: AppBar(
+        title: Text(widget.title),
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (BuildContext context) {
+                  return NewsPostPage();
+                }));
+              })
+        ],
+      ),
+      body: Consumer<PostProvider>(
+        builder: (BuildContext context, PostProvider provider, Widget child) {
+          return ListView.builder(
+            itemCount: provider.posts.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '10 min ago',
+                          style: TextStyle(color: Colors.grey[400]),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          provider.posts[index],
+                          style: TextStyle(fontSize: 18),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 10,
-                  child: Container(
-                    decoration: BoxDecoration(color: Colors.grey[350]),
-                  ),
-                )
-              ],
-            );
-          },
-        ));
+                  SizedBox(
+                    height: 10,
+                    child: Container(
+                      decoration: BoxDecoration(color: Colors.grey[350]),
+                    ),
+                  )
+                ],
+              );
+            },
+          );
+        },
+      ),
+      // body: ListView.builder(
+      //   itemCount: 1,
+      //   itemBuilder: (BuildContext context, int index) {
+      //     return Column(
+      //       crossAxisAlignment: CrossAxisAlignment.start,
+      //       children: [
+      //         Container(
+      //           padding: EdgeInsets.all(10),
+      //           child: Column(
+      //             crossAxisAlignment: CrossAxisAlignment.start,
+      //             children: [
+      //               Text(
+      //                 '10 min ago',
+      //                 style: TextStyle(color: Colors.grey[400]),
+      //               ),
+      //               SizedBox(
+      //                 height: 10,
+      //               ),
+      //               Text(
+      //                 'สวัสดี โลก',
+      //                 style: TextStyle(fontSize: 18),
+      //               )
+      //             ],
+      //           ),
+      //         ),
+      //         SizedBox(
+      //           height: 10,
+      //           child: Container(
+      //             decoration: BoxDecoration(color: Colors.grey[350]),
+      //           ),
+      //         )
+      //       ],
+      //     );
+      //   },
+      // )
+    );
   }
 }
