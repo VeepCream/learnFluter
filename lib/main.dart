@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learn/pages/new_post_page.dart';
+import 'package:learn/provider/post_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,13 +10,22 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Nextflow Personal Post',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (BuildContext context) {
+            return PostProvider();
+          },
+        )
+      ],
+      child: MaterialApp(
+        title: 'Nextflow Personal Post',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: MyHomePage(title: 'Personal Post'),
       ),
-      home: MyHomePage(title: 'Personal Post'),
     );
   }
 }
