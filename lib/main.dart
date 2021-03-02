@@ -12,11 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (BuildContext context) {
-            return PostProvider();
-          },
-        )
+        ChangeNotifierProvider(create: (BuildContext context) => PostProvider())
       ],
       child: MaterialApp(
         title: 'Nextflow Personal Post',
