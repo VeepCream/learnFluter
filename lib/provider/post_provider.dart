@@ -6,7 +6,7 @@ class PostProvider with ChangeNotifier {
   List<String> get posts => _posts;
 
   addNewPost(String post) {
-    _posts.add(post);
+    _posts.insert(0, post);
 
     notifyListeners();
   }
