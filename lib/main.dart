@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:learn/pages/new_post_page.dart';
 import 'package:learn/provider/post_provider.dart';
 import 'package:provider/provider.dart';
+import 'models/post_model.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 void main() {
+  timeago.setLocaleMessages('th', timeago.ThMessages());
+  timeago.setLocaleMessages('th_short', timeago.ThShortMessages());
   runApp(MyApp());
 }
 
@@ -57,6 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
           return ListView.builder(
             itemCount: provider.posts.length,
             itemBuilder: (BuildContext context, int index) {
+              Post post = provider.posts[index];
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -66,14 +71,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '10 min ago',
+                          post.timeagoMessage,
                           style: TextStyle(color: Colors.grey[400]),
                         ),
                         SizedBox(
                           height: 10,
                         ),
                         Text(
-                          provider.posts[index],
+                          post.message,
                           style: TextStyle(fontSize: 18),
                         )
                       ],

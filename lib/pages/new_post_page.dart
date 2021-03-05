@@ -39,7 +39,7 @@ class NewsPostPage extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: SizedBox(
                   width: double.maxFinite,
-                  child: RaisedButton(
+                  child: ElevatedButton(
                       child: Text('โพส'),
                       onPressed: () {
                         if (fromKey.currentState.validate()) {
