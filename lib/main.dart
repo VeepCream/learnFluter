@@ -41,6 +41,13 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Provider.of<PostProvider>(context, listen: false).initData();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -65,23 +72,26 @@ class _MyHomePageState extends State<MyHomePage> {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          post.timeagoMessage,
-                          style: TextStyle(color: Colors.grey[400]),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          post.message,
-                          style: TextStyle(fontSize: 18),
-                        )
-                      ],
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      padding: EdgeInsets.all(10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            post.timeagoMessage,
+                            style: TextStyle(color: Colors.grey[400]),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            post.message,
+                            style: TextStyle(fontSize: 18),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(
