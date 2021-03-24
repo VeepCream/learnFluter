@@ -10,7 +10,7 @@ class Post {
     DateTime now = DateTime.now();
     Duration duration = now.difference(this.createdDate);
     DateTime age = now.subtract(duration);
-    String message = timeago.format(age, locale: 'th_short');
+    String message = timeago.format(age, locale: 'th');
 
     return message;
   }

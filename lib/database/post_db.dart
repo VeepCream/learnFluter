@@ -47,4 +47,10 @@ class PostDB {
 
     return postsList;
   }
+
+  Future<void> clearPostData() async {
+    var database = await this.openDatabase();
+    var postStore = intMapStoreFactory.store('posts');
+    await postStore.drop(database);
+  }
 }
